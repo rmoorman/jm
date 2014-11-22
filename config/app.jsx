@@ -1,4 +1,8 @@
-var React = require("react");
-var Application = require("../app/" + __resourceQuery.substr(1));
+var React = require("react"),
+    Router = require('react-router');
 
-React.render(<Application />, document.body);
+var ApplicationRouting = require("../app/Routes")
+
+Router.run(ApplicationRouting, function (Handler) {
+  React.render(<Handler/>, document.body);
+});

@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 
 var React = require("react");
-var Application = React.createFactory(require("../app/" + __resourceQuery.substr(1)));
+var Application = React.createFactory(require("../app/Application");
 var html = require("../app/prerender.html");
 
 module.exports = function(scriptUrl, styleUrl, commonsUrl) {
