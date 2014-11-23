@@ -1,6 +1,7 @@
 var React = require("react"),
     Router = require('react-router'),
-    RouteHandler = Router.RouteHandler;
+    RouteHandler = Router.RouteHandler,
+    Flux = require('Flux');
 
 var Application = React.createClass({
 	render: function() {
@@ -9,7 +10,14 @@ var Application = React.createClass({
                 <RouteHandler/>
             </div>
       );
-	}
+	},
+    statics: {
+        willTransitionTo: function(transition, params) {
+            if (!Flux.store('UserStore').getIsLoggedIn() && !transition.path == '/login') {
+                transition.redirect('login');
+            }
+        }
+    }
 });
 
 module.exports = Application;

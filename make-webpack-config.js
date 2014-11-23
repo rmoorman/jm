@@ -22,7 +22,7 @@ module.exports = function(options) {
         "md|markdown": ["html-loader", "markdown-loader"],
     };
     var stylesheetLoaders = {
-        "css": "css-loader",
+        "css": "css-loader?disableStructuralMinification",
         "less": "css-loader!less-loader",
         "styl": "css-loader!stylus-loader",
         "sass": "css-loader!sass-loader",
