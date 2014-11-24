@@ -1,12 +1,12 @@
+var JamaAPI = require('jama-rest-api'),
+    APIInstance = new JamaAPI({restURL: '', username: '', password: ''});
+
 var JamaInterface = {
+
     user: {
-        authenticate: function(username, password, cb) {
-            cb(null, {
-                username: username,
-                hash: btoa(username + ':' + password),
-                id: 1,
-                name: 'hdao'
-            });
+        authenticate: function(restUrl, username, password) {
+            APIInstance.authenticate(restUrl, username, password);
+            return APIInstance.users.current();
         }
     }
 }

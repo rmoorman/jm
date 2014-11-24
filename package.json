@@ -1,6 +1,6 @@
 {
-  "name": "react-starter",
-  "version": "0.0.0",
+  "name": "jama-web",
+  "version": "0.0.1",
   "description": "",
   "main": "app/app.js",
   "scripts": {
@@ -10,14 +10,7 @@
     "build": "webpack --config webpack-production.config.js --progress --profile --colors",
     "start": "node lib/server"
   },
-  "keywords": [
-    "webpack",
-    "react",
-    "starter",
-    "boilerplate",
-    "hot"
-  ],
-  "author": "Tobias Koppers @sokra",
+  "author": "Jason Brown",
   "license": "MIT",
   "dependencies": {
     "bluebird": "^2.3.11",
@@ -27,6 +20,7 @@
     "fluxxor": "^1.5.0",
     "html-loader": "^0.2.2",
     "immutable": "^3.2.1",
+    "jama-rest-api": "0.0.6",
     "jsx-loader": "^0.12.2",
     "less": "^1.7.5",
     "less-loader": "^0.7.5",

@@ -3,16 +3,16 @@ var JamaInterace = require('./../api/JamaInterface'),
     Promise = require('bluebird');
 
 var UserCreator = {
-    authenticateUser: function(username, password) {
+    authenticateUser: function(restUrl, username, password) {
         return new Promise(function(resolve, reject) {
-            JamaInterace.user.authenticate(username, password, function(err, userInfo) {    
-
+            JamaInterace.user.authenticate(restUrl, username, password).end(function(err, res) {
                 if (err) {
-                    reject();
-                } else {
-                    Flux.actions.UserActions.loginSuccess(userInfo);
-                    resolve(userInfo); 
+                    return reject();
                 }
+
+                Flux.actions.UserActions.setUserInfo(res.body.data);
+                resolve(res.body.data)
+
             });
         });
     }

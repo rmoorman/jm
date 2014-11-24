@@ -20,11 +20,12 @@ var Login = React.createClass({
     },
     handleClick: function() {
         //This violates some flux anti patterns just so we can handle transitions after login
-        UserCreator.authenticateUser(this.state.username, this.state.password).then(_.bind(function() {
-            this.transitionTo('/')
+        var p = UserCreator.authenticateUser(this.state.rest, this.state.username, this.state.password);
 
-        }, this)).error(_.bind(function() {
+        p.error(_.bind(function() {
             //ERROR LOGGING IN
+        }, this)).then(_.bind(function() {
+            this.transitionTo('/')
         }, this))
     },
     handleChange: function(scope, e) {
