@@ -10,7 +10,7 @@ module.exports = function(options) {
         // second: reactEntry("Second")
     };
     var loaders = {
-        "jsx": options.hotComponents ? ["react-hot-loader", "jsx-loader?harmony"] : "jsx-loader",
+        "jsx": options.hotComponents ? ["react-hot-loader", "jsx-loader?harmony"] : "jsx-loader?harmony",
         "json": "json-loader",
         "json5": "json5-loader",
         "txt": "raw-loader",
@@ -42,8 +42,16 @@ module.exports = function(options) {
     var modulesDirectories = ["web_modules", "node_modules"];
     var extensions = ["", ".web.js", ".js", ".jsx"];
     var root = path.join(__dirname, "app");
+ 
+    var outputPath = '';
+    if (options.mobile) {
+        outputPath = path.join(__dirname, "phonegap_app/www/js");
+    } else {
+        outputPath = path.join(__dirname, "build", options.prerender ? "prerender" : "public");
+    }
+
     var output = {
-        path: path.join(__dirname, "build", options.prerender ? "prerender" : "public"),
+        path: outputPath,
         publicPath: "/",
         filename: "[name].js" + (options.longTermCaching && !options.prerender ? "?[chunkhash]" : ""),
         chunkFilename: (options.devServer ? "[id].js" : "[name].js") + (options.longTermCaching && !options.prerender ? "?[chunkhash]" : ""),
